@@ -8,7 +8,7 @@ while ((1)); do
     for SINK in $sinks
     do
 	pactl set-sink-mute $SINK false
-	pactl set-sink-volume $SINK 30%
+	pactl set-sink-volume $SINK 100%
     done
 
     aplay --duration 5 ~/.local/share/skype/notification.wav
