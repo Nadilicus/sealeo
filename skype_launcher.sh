@@ -1,16 +1,24 @@
 #!/bin/bash
 
-sinks=$(pactl list sinks | grep Name | sed s/"\tName:"//g)
+sleep 4
 
-for SINK in $sinks
-do
-    pactl set-sink-mute $SINK false
-    pactl set-sink-volume $SINK 10%
-done
+while ((1)); do
+    sinks=$(pactl list sinks | grep Name | sed s/"\tName:"//g)
 
-aplay --duration 5 ~/.local/share/skype/notification.wav
+    for SINK in $sinks
+    do
+	pactl set-sink-mute $SINK false
+	pactl set-sink-volume $SINK 30%
+    done
 
-for SINK in $sinks
-do
-    pactl set-sink-mute $SINK true
+    aplay --duration 5 ~/.local/share/skype/notification.wav
+
+    for SINK in $sinks
+    do
+	pactl set-sink-mute $SINK true
+    done
+
+    time=$((RANDOM%2+10))
+    sleep $time
+
 done
