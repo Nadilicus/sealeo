@@ -11,7 +11,7 @@ while ((1)); do
 	pactl set-sink-volume $SINK 100%
     done
 
-    aplay --duration 5 ~/.local/share/skype/notification.wav
+    aplay --duration 8 ~/.local/share/skype/notification.wav
 
     for SINK in $sinks
     do
