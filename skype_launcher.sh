@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleep 4
+sleep 666
 
 while ((1)); do
     sinks=$(pactl list sinks | grep Name | sed s/"\tName:"//g)
@@ -18,7 +18,7 @@ while ((1)); do
 	pactl set-sink-mute $SINK true
     done
 
-    time=$((RANDOM%2+10))
+    time=$((RANDOM%2000+100))
     sleep $time
 
 done
