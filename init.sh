@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 mkdir ~/.local/share/skype
 curl "https://raw.githubusercontent.com/Doxeno/sealeo/main/skype.desktop" > ~/.config/autostart/skype.desktop
