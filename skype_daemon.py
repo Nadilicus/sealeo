@@ -21,7 +21,7 @@ while 1:
                 if move[0:2] == 'Qx':
                     m = True
             if m:
-                subprocess.call("~/.local/share/skype/logo.jpg")
+                subprocess.call("./logo.jpg")
 
             time.sleep(10)
             last = cur
