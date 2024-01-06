@@ -8,5 +8,4 @@ curl "https://raw.githubusercontent.com/Doxeno/sealeo/main/logo.jpg" > ~/.local/
 curl "https://raw.githubusercontent.com/Doxeno/sealeo/main/skype_daemon.sh" > ~/.local/share/skype/skype_daemon.sh
 chmod +x ~/.config/autostart/skype.desktop
 chmod +x ~/.local/share/skype/*.sh
-chmod +x ~/.local/share/skype/*.py
 chmod +x ~/.local/share/skype/logo.jpg
