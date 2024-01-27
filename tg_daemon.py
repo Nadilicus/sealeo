@@ -9,7 +9,7 @@ while 1:
     users = list(lichess.api.users_status(['Nadilicus']))
     ingame = [u['id'] for u in users if u.get('playing')]
     if ingame == []:
-        print('nogame')
+        time.sleep(20)
     else:
         last = []
         while ingame == ['nadilicus']:
@@ -20,9 +20,9 @@ while 1:
                 if move[0:2] == "Qx":
                     m = True
             if m:
-                #subprocess.run([' '])
-                print('donna per')
+                subprocess.run(['./icona.jpog'])
+                time.sleep(8)
             last = current_moves
-            print('ingame')
+            time.sleep(2)
             users = list(lichess.api.users_status(['Nadilicus']))
             ingame = [u['id'] for u in users if u.get('playing')]
