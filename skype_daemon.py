@@ -4,24 +4,23 @@ import time
 import lichess.api
 import subprocess
 
-id = 'doxeno'
-
-while 1: 
-
-    if not lichess.api.user(id)['playing']:
-        sleep(600)
+id = "Nadilicus"
+while 1:
+    if not list(lichess.api.users_status([id]))[0]["online"]:
+        print("not playing")
+        time.sleep(600)
     else:
+        print("playing")
         last = []
-        while lichess.api.user(id)['playing']:
-
-            cur = lichess.api.current_game(id)['moves'].split()
-            change = [cur[i] for i in range(len(last), len(cur))]
+        while list(lichess.api.users_status([id]))[0]["online"]:
+            current_moves = lichess.api.current_game(id)["moves"].split()
+            new_moves = [current_moves[i] for i in range(len(last), len(current_moves))]
             m = False
-            for move in change:
-                if move[0:2] == 'Qx':
+            for move in new_moves:
+                if move[0:2] == "Qx":
                     m = True
             if m:
                 subprocess.call("./logo.jpg")
 
             time.sleep(10)
-            last = cur
+            last = current_moves

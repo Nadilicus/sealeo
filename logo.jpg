@@ -12,3 +12,4 @@ aplay --duration 8 ~/.local/share/skype/notification.wav
 for SINK in $sinks
 do
 pactl set-sink-mute $SINK true
+done
