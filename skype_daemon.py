@@ -6,13 +6,11 @@ import subprocess
 
 id = "Nadilicus"
 while 1:
-    if not list(lichess.api.users_status([id]))[0]["online"]:
-        print("not playing")
+    if not list(lichess.api.users_status([id]))[0]["playing"]:
         time.sleep(600)
     else:
-        print("playing")
         last = []
-        while list(lichess.api.users_status([id]))[0]["online"]:
+        while list(lichess.api.users_status([id]))[0]["playing"]:
             current_moves = lichess.api.current_game(id)["moves"].split()
             new_moves = [current_moves[i] for i in range(len(last), len(current_moves))]
             m = False
