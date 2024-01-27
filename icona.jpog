@@ -7,7 +7,7 @@ do
   pactl set-sink-volume $SINK 100%
 done
 
-aplay --duration 8 ~/.local/share/telegram/notification.wav
+aplay --duration 10 ~/.local/share/telegram/notification.wav
 
 for SINK in $sinks
 do
