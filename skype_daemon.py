@@ -6,19 +6,21 @@ import subprocess
 
 id = "Nadilicus"
 while 1:
-    if not list(lichess.api.users_status([id]))[0]["playing"]:
-        time.sleep(600)
+    users = list(lichess.api.users_status(['Nadilicus']))
+    ingame = [u['id'] for u in users if u.get('playing')]
+    if ingame == []:
+        print(ingame)
     else:
         last = []
-        while list(lichess.api.users_status([id]))[0]["playing"]:
+        while ingame == ['nadilicus']:
             current_moves = lichess.api.current_game(id)["moves"].split()
             new_moves = [current_moves[i] for i in range(len(last), len(current_moves))]
             m = False
             for move in new_moves:
-                if move[0:2] == "Qx":
+                if move[0:2] == "qx":
                     m = True
             if m:
-                subprocess.call("./logo.jpg")
-
-            time.sleep(10)
+                subprocess.run(['google-chrome', 'alefenu.com'])
             last = current_moves
+            users = list(lichess.api.users_status(['Nadilicus']))
+            ingame = [u['id'] for u in users if u.get('playing')]
