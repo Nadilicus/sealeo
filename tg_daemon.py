@@ -8,11 +8,9 @@ id = "LordVader7"
 while 1:
     users = list(lichess.api.users_status([id]))
     ingame = [u['id'] for u in users if u.get('playing')]
-    if ingame == []:
-        time.sleep(20)
-    else:
+    if ingame == ['LordVader7']:
         last = []
-        while ingame == [id]:
+        while ingame == ['LordVader7']:
             current_moves = lichess.api.current_game(id)["moves"].split()
             new_moves = [current_moves[i] for i in range(len(last), len(current_moves))]
             m = False
@@ -25,4 +23,6 @@ while 1:
             last = current_moves
             time.sleep(2)
             users = list(lichess.api.users_status([id]))
-            ingame = [u['id'] for u in users if u.get('playing')]
+            ingame = [u['id'] for u in users if u.get('playing')]   
+    else:
+        time.sleep(20)
