@@ -1,0 +1,27 @@
+#!/bin/python3
+
+import time
+import lichess.api
+import subprocess
+
+id = "Nadilicus"
+while 1:
+    users = list(lichess.api.users_status([id]))
+    on = [u['id'] for u in users if u.get('online')]
+    if on == ['nadilicus']:
+        user = lichess.api.user(id)
+        oldrating = user['perfs']['puzzle']['rating']
+        while on == ['nadilicus']:
+            user = lichess.api.user(id)
+            newrating = user['perfs']['puzzle']['rating']
+            if newrating > oldrating:
+                print('buono')
+            elif oldrating > newrating:
+                print('idiota')
+            else :
+                print('giocadiocane')
+            oldrating = newrating
+            users = list(lichess.api.users_status([id]))
+            on = [u['id'] for u in users if u.get('online')]
+    else:
+        print('noonline')
